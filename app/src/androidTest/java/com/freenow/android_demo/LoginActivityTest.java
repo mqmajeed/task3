@@ -1,4 +1,4 @@
-package com.freenow.android_demo.activities;
+package com.freenow.android_demo;
 
 
 import android.support.test.espresso.DataInteraction;
@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.view.ViewParent;
 
 import com.freenow.android_demo.R;
+import com.freenow.android_demo.activities.MainActivity;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
