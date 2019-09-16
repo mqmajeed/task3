@@ -14,6 +14,9 @@ jobs:
       - restore_cache:
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
       - run:
+          name: Accept licenses
+          command: yes | sdkmanager --licenses || true
+      - run:
           name: Chmod permissions #if permission for Gradlew Dependencies fail, use this.
           command: sudo chmod +x ./gradlew
       - run:
@@ -28,7 +31,7 @@ jobs:
           command: ./gradlew lint test
       - run:
           name: Setup emulator
-          command: sdkmanager "system-images;android-26;google_apis_playstore;x86" && echo "no" | avdmanager create avd -n test -k "system-images;android-26;google_apis_playstore;x86" -b x86 -c 1000M -d 7 -f
+          command: sdkmanager "system-images;android-29;google_apis_playstore;x86" && echo "no" | avdmanager create avd -n test -k "system-images;android-29;google_apis_playstore;x86" -b x86 -c 1000M -d 7 -f
       - run:
           name: Launch emulator
           command: export LD_LIBRARY_PATH=${ANDROID_HOME}/emulator/lib64:${ANDROID_HOME}/emulator/lib64/qt/lib && emulator -avd test -no-audio -no-boot-anim -no-window -accel on -gpu off                 
