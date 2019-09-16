@@ -28,7 +28,7 @@ jobs:
           command: ./gradlew lint test
       - run:
           name: Setup emulator
-          command: sdkmanager "system-images;android-26;google_apis_playstore;x86" && echo "no" | avdmanager create avd -n test -k "system-images;android-26;google_apis_playstore;x86" -b x86 -c 100M -d 7 -f
+          command: sdkmanager "system-images;android-26;google_apis;x86_64" && echo "no" | avdmanager create avd -n test -k "system-images;android-26;google_apis;x86_64" -b x86_64 -c 100M -d 7 -f
       - run:
           name: Launch emulator
           command: |
